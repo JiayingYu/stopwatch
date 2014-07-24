@@ -91,4 +91,11 @@ public class StopWatchImpl implements IStopwatch {
 		res = res * 31 + id.hashCode();
 		return res;
 	}
+	
+	@Override
+	public String toString() {
+		String s = "ID: " + id + "\n";
+		s += lapTimeList.toString();
+		return s;
+	}
 }

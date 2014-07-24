@@ -1,21 +1,49 @@
 package stopwatch.demo;
 
-import java.util.concurrent.TimeUnit;
+import java.util.Random;
+import java.util.concurrent.*;
 
 import stopwatch.api.IStopwatch;
 import stopwatch.impl.StopwatchFactory;
 
 public class StopwatchTester {
-	public static void main(String[] args) throws InterruptedException {
-		IStopwatch stopwatch = StopwatchFactory.getStopwatch("testWatch");
-		stopwatch.start();
+	public static void test() {
+		final IStopwatch watch = StopwatchFactory.getStopwatch("test");
+		ExecutorService exc = Executors.newCachedThreadPool();
+		watch.start();
 		for (int i = 0; i < 5; i++) {
-			TimeUnit.MILLISECONDS.sleep(100);
-			stopwatch.lap();
+			exc.execute(new Runnable() {
+				public void run() {
+					try {
+						Random rand = new Random();
+						TimeUnit.MILLISECONDS.sleep(rand.nextInt(300));
+						watch.lap();
+					} catch (InterruptedException e) {
+						System.out.println("Sleep interrupted.");
+					}		
+				}
+			});
 		}
-		TimeUnit.MILLISECONDS.sleep(100);
-		stopwatch.stop();
 		
-		System.out.println(stopwatch.getLapTimes());
+		try {
+			TimeUnit.MILLISECONDS.sleep(600);
+			watch.stop();
+			System.out.println(watch.getLapTimes());
+			
+			TimeUnit.MILLISECONDS.sleep(100);
+			watch.start();
+			TimeUnit.MILLISECONDS.sleep(100);
+			watch.stop();
+			System.out.println(watch.getLapTimes());
+			
+			watch.reset();
+			System.out.println(watch.getLapTimes());
+		} catch (InterruptedException e) {
+			System.out.println("Sleep interrupted.");
+		}
+	}
+	
+	public static void main(String[] args) {
+		test();
 	}
 }
