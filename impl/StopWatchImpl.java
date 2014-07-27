@@ -98,4 +98,18 @@ public class StopWatchImpl implements IStopwatch {
 		s += lapTimeList.toString();
 		return s;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		
+		if (!(o instanceof StopWatchImpl)) {
+			return false;
+		}
+		
+		StopWatchImpl thatSp = (StopWatchImpl) o;
+		return thatSp.id == id;
+	}
 }
