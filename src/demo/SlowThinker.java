@@ -1,10 +1,10 @@
-package stopwatch.demo;
+package demo;
 
 import java.util.List;
 import java.util.logging.Logger;
 
-import stopwatch.api.IStopwatch;
-import stopwatch.impl.StopwatchFactory;
+import api.IStopwatch;
+import impl.StopwatchFactory;
 
 /**
  * This is a simple program that demonstrates just some of

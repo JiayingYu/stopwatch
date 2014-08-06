@@ -1,10 +1,10 @@
-package stopwatch.impl;
+package impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import stopwatch.api.IStopwatch;
+import api.IStopwatch;
 
 public class StopWatchImpl implements IStopwatch {
 	private final String id;

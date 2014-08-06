@@ -1,4 +1,4 @@
-package stopwatch.api;
+package api;
 import java.util.List;
 
 /**

@@ -1,10 +1,10 @@
-package stopwatch.demo;
+package demo;
 
 import java.util.Random;
 import java.util.concurrent.*;
 
-import stopwatch.api.IStopwatch;
-import stopwatch.impl.StopwatchFactory;
+import api.IStopwatch;
+import impl.StopwatchFactory;
 
 public class StopwatchTester {
 	public static void test() {
@@ -40,6 +40,8 @@ public class StopwatchTester {
 			System.out.println(watch.getLapTimes());
 		} catch (InterruptedException e) {
 			System.out.println("Sleep interrupted.");
+		} finally {
+			exc.shutdownNow();
 		}
 	}
 	

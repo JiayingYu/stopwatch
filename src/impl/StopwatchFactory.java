@@ -1,11 +1,11 @@
-package stopwatch.impl;
+package impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import stopwatch.api.IStopwatch;
+import api.IStopwatch;
 
 /**
  * The StopwatchFactory is a thread-safe factory class for IStopwatch objects.
